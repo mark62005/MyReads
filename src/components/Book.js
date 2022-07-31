@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import Bookshelf from "./Bookshelf";
 
-const Book = ({ book, onChangeShelf }) => {
+const Book = ({ book }) => {
     const changeShelf = (event) => {
         // update book's shelf to api
         console.log(`Book: ${book.title}, current shelf: ${book.shelf}`);

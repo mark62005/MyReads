@@ -1,21 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { getAll } from "../BooksAPI";
 import Book from "./Book";
 
-const SearchBook = () => {
+const SearchBook = ({ books }) => {
     const [ query, setQuery ] = useState("");
-    const [ books, setBooks ] = useState([]);
-
-    const fetchAllBooks = async () => {
-        const res = await getAll();
-        setBooks(res);
-    };
-
-    useEffect(() => {
-        fetchAllBooks();
-    }, []);
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
