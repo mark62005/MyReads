@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Bookshelf from "./Bookshelf";
 
 const Book = ({ book, onChangeShelf }) => {
     const changeShelf = (event) => {
@@ -36,7 +37,11 @@ const Book = ({ book, onChangeShelf }) => {
                 <div className="book-title">{ book.title }</div>
                 <div className="book-authors">
                     {
-                        book.authors.map((author) => <p className="book-author" key={ author }>{ author }</p>)
+                        book.authors.map((author, index) => {
+                            return index === book.authors.length - 1
+                                ? `${author}`
+                                : `${author}, `
+                        })
                     }
                 </div>
             </div>

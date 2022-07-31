@@ -18,14 +18,14 @@ const SearchBook = () => {
     }, []);
 
     const handleInputChange = (event) => {
-        setQuery(event.target.value.trim());
+        setQuery(event.target.value);
     };
 
     const filteredBooks =
         query === ""
             ? books
             : books.filter(book =>
-                book.title.toLowerCase().includes(query.toLowerCase())
+                book.title.toLowerCase().includes(query.trim().toLowerCase())
             );
 
     return (
