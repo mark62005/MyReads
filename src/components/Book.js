@@ -1,10 +1,10 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 
 const Book = ({ book, onChangeShelf }) => {
     const changeShelf = (event) => {
         // update book's shelf to api
-        onChangeShelf(book, event.target.value);
+        console.log(`Book: ${book.title}, current shelf: ${book.shelf}`);
+        console.log(`New shelf: ${event.target.value}`);
     };
 
     return (
