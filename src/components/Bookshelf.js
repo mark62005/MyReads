@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Book from "./Book";
 
-const bookshelf = ({ shelf, books }) => {
+const Bookshelf = ({ shelf, books }) => {
     const displayShelfTitle = (shelf) => {
         switch (shelf) {
             case "currentlyReading":
@@ -31,9 +31,9 @@ const bookshelf = ({ shelf, books }) => {
     );
 };
 
-bookshelf.propTypes = {
+Bookshelf.propTypes = {
     shelf: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
 };
 
-export default bookshelf;
+export default Bookshelf;
