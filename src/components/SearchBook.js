@@ -1,21 +1,40 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { search } from "../BooksAPI";
 import Book from "./Book";
 
-const SearchBook = ({ books }) => {
+const SearchBook = () => {
     const [ query, setQuery ] = useState("");
+    const [ matchedBooks, setMatchedBooks ] = useState([]);
 
-    const handleInputChange = (event) => {
-        setQuery(event.target.value);
+    useEffect(() => {
+        console.log(query);
+        if (query !== "") {
+            search(query)
+                .then(res => {
+                    console.log(res);
+                    if (res.error) {
+                        setMatchedBooks([]);
+                    } else {
+                        setMatchedBooks(res);
+                    }
+                })
+                .catch(console.log);
+        } else {
+            setMatchedBooks([]);
+        }
+    }, [ query ]);
+
+    const renderSearchResults = () => {
+        return matchedBooks.length > 0
+            ? matchedBooks.map((book) => <Book key={ book.id } book={ book } />)
+            : null;
     };
 
-    const filteredBooks =
-        query === ""
-            ? books
-            : books.filter(book =>
-                book.title.toLowerCase().includes(query.trim().toLowerCase())
-            );
+    const handleInputChange = (event) => {
+        event.preventDefault();
+        setQuery(event.target.value);
+    };
 
     return (
         <div className="search-books">
@@ -34,19 +53,11 @@ const SearchBook = ({ books }) => {
             </div>
             <div className="search-books-results">
                 <ol className="books-grid">
-                    {
-                        filteredBooks && filteredBooks.length > 0
-                            ? filteredBooks.map((book) => <Book key={ book.id } book={ book } />)
-                            : null
-                    }
+                    { renderSearchResults() }
                 </ol>
             </div>
         </div>
     );
-};
-
-SearchBook.propTypes = {
-    books: PropTypes.array.isRequired,
 };
 
 export default SearchBook;
