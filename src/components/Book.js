@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import { update } from "../BooksAPI";
 import PropTypes from "prop-types";
 
 const Book = ({ book, fetchAllBooks }) => {
     const renderCover = () => {
         return (
-            <div
+            <Link
                 className="book-cover"
                 style={ {
                     width: 128,
@@ -15,7 +16,8 @@ const Book = ({ book, fetchAllBooks }) => {
                             : null}
                         )`,
                 } }
-            ></div>
+                to={ `/books/${book.id}` }
+            ></Link>
         );
     }
 

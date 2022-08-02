@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getAll } from "./BooksAPI";
 import BookList from "./components/BookList";
 import SearchBook from "./components/SearchBook";
+import BookDetails from "./components/BookDetails";
 
 function App() {
     const [ books, setBooks ] = useState([]);
@@ -24,6 +25,11 @@ function App() {
                     exact
                     path="/"
                     element={ <BookList books={ books } fetchAllBooks={ fetchAllBooks } /> }
+                />
+                <Route
+                    exact
+                    path="/books/:bookId"
+                    element={ <BookDetails /> }
                 />
                 <Route
                     path="/search"
