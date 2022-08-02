@@ -1,10 +1,11 @@
+import { update } from "../BooksAPI";
 import PropTypes from "prop-types";
 
-const Book = ({ book }) => {
-    const changeShelf = (event) => {
-        // update book's shelf to api
-        console.log(`Book: ${book.title}, current shelf: ${book.shelf}`);
-        console.log(`New shelf: ${event.target.value}`);
+const Book = ({ book, fetchAllBooks }) => {
+    const changeShelf = async (event) => {
+        event.preventDefault();
+        await update(book, event.target.value);
+        fetchAllBooks();
     };
 
     return (
@@ -20,7 +21,7 @@ const Book = ({ book }) => {
                         } }
                     ></div>
                     <div className="book-shelf-changer">
-                        <select onChange={ changeShelf }>
+                        <select onChange={ changeShelf } value={ book.shelf }>
                             <option value="none" disabled>
                                 Move to...
                             </option>
@@ -50,6 +51,7 @@ const Book = ({ book }) => {
 
 Book.propTypes = {
     book: PropTypes.object.isRequired,
+    fetchAllBooks: PropTypes.func.isRequired,
 };
 
 export default Book;

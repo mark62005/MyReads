@@ -23,7 +23,7 @@ function App() {
                 <Route
                     exact
                     path="/"
-                    element={ <BookList books={ books } /> }
+                    element={ <BookList books={ books } fetchAllBooks={ fetchAllBooks } /> }
                 />
                 <Route
                     path="/search"
