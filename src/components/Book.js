@@ -24,15 +24,21 @@ const Book = ({ book, fetchAllBooks }) => {
     const renderAuthors = () => {
         return book.authors && book.authors.length > 0
             ? getAuthorsString()
-            : null;
+            : "";
     };
 
     const getAuthorsString = () => {
-        book.authors.map((author, index) => {
-            return index === book.authors.length - 1
-                ? `${author}`
-                : `${author}, `
+        let str = "";
+
+        book.authors.forEach((author, index) => {
+            if (index === book.authors.length - 1) {
+                str += author;
+            }
+            else {
+                str += `${author}, `;
+            }
         });
+        return str;
     };
 
     const changeShelf = async (event) => {
