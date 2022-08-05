@@ -1,35 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { search } from "../BooksAPI";
-import Book from "./Book";
+import SearchResults from "./SearchResults";
 
 const SearchBook = () => {
     const [ query, setQuery ] = useState("");
     const [ matchedBooks, setMatchedBooks ] = useState([]);
 
     useEffect(() => {
-        console.log(query);
         if (query !== "") {
             search(query)
                 .then(res => {
-                    console.log(res);
-                    if (res.error) {
-                        setMatchedBooks([]);
-                    } else {
-                        setMatchedBooks(res);
-                    }
+                    res.error ? setMatchedBooks([]) : setMatchedBooks(res);
                 })
                 .catch(console.log);
         } else {
             setMatchedBooks([]);
         }
     }, [ query ]);
-
-    const renderSearchResults = () => {
-        return matchedBooks.length > 0
-            ? matchedBooks.map((book) => <Book key={ book.id } book={ book } />)
-            : null;
-    };
 
     const handleInputChange = (event) => {
         event.preventDefault();
@@ -51,11 +39,7 @@ const SearchBook = () => {
                     />
                 </div>
             </div>
-            <div className="search-books-results">
-                <ol className="books-grid">
-                    { renderSearchResults() }
-                </ol>
-            </div>
+            <SearchResults matchedBooks={ matchedBooks } />
         </div>
     );
 };

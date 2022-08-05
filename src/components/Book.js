@@ -10,16 +10,15 @@ const Book = ({ book, fetchAllBooks }) => {
                 style={ {
                     width: 128,
                     height: 193,
-                    backgroundImage: `url(
-                        ${book.imageLinks.thumbnail
-                            ? book.imageLinks.thumbnail
-                            : null}
-                        )`,
+                    backgroundImage:
+                        book.imageLinks && book.imageLinks.thumbnail
+                            ? `url(${book.imageLinks.thumbnail})`
+                            : null,
                 } }
                 to={ `/books/${book.id}` }
             ></Link>
         );
-    }
+    };
 
     const renderAuthors = () => {
         return book.authors && book.authors.length > 0

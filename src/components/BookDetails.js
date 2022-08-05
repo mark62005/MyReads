@@ -34,9 +34,9 @@ const BookDetails = () => {
         event.preventDefault();
         await update(book, event.target.value);
         fetchBook(book.id);
-    }
+    };
 
-    const renderBook = () => {
+    const renderBookDetails = () => {
         if (book) {
             return <div className="book-top" style={ {
                 flexDirection: "column"
@@ -44,7 +44,11 @@ const BookDetails = () => {
                 <h1>{ book.title }</h1>
                 <div>
                     <img
-                        src={ `${book.imageLinks.thumbnail}` }
+                        src={
+                            book.imageLinks && book.imageLinks.thumbnail
+                                ? `${book.imageLinks.thumbnail}`
+                                : null
+                        }
                         alt={ book.title }
                     />
                     <div className="book-shelf-changer">
@@ -65,14 +69,14 @@ const BookDetails = () => {
                 <h4>Authors: <span style={ { fontWeight: "normal" } }>{ book.authors }</span></h4>
                 <p><span style={ { fontWeight: "bold" } }>Description: </span>Description: { book.description }</p>
                 <h5>Shelf: <span style={ { fontWeight: "normal" } }>{ displayShelfTitle() }</span></h5>
-            </div>
+            </div>;
         }
         return null;
-    }
+    };
 
     return (
         <div className="book-details">
-            { renderBook() }
+            { renderBookDetails() }
         </div>
     );
 };
