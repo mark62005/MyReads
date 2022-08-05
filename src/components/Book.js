@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { update } from "../BooksAPI";
 import PropTypes from "prop-types";
 
-const Book = ({ book, fetchAllBooks }) => {
+const Book = ({ book, fetchAllBooks, isSearchResult, shelfFromMainPage }) => {
     const renderCover = () => {
         return (
             <Link
@@ -43,9 +43,9 @@ const Book = ({ book, fetchAllBooks }) => {
     const changeShelf = async (event) => {
         event.preventDefault();
         await update(book, event.target.value);
-        if (fetchAllBooks) {
-            fetchAllBooks();
-        }
+
+        fetchAllBooks();
+
     };
 
     return (
@@ -54,7 +54,16 @@ const Book = ({ book, fetchAllBooks }) => {
                 <div className="book-top">
                     { renderCover() }
                     <div className="book-shelf-changer">
-                        <select onChange={ changeShelf } value={ book.shelf }>
+                        <select
+                            onChange={ changeShelf }
+                            value={
+                                book.shelf
+                                    ? book.shelf
+                                    : shelfFromMainPage
+                                        ? shelfFromMainPage
+                                        : "none"
+                            }
+                        >
                             <option value="none" disabled>
                                 Move to...
                             </option>
@@ -63,7 +72,11 @@ const Book = ({ book, fetchAllBooks }) => {
                             </option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
-                            <option value="none">None</option>
+                            {
+                                isSearchResult === true
+                                    ? null
+                                    : <option value="none">None</option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -78,7 +91,9 @@ const Book = ({ book, fetchAllBooks }) => {
 
 Book.propTypes = {
     book: PropTypes.object.isRequired,
-    fetchAllBooks: PropTypes.func,
+    fetchAllBooks: PropTypes.func.isRequired,
+    isSearchResult: PropTypes.bool,
+    shelfFromMainPage: PropTypes.string,
 };
 
 export default Book;

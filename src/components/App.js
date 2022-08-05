@@ -1,10 +1,10 @@
-import "./css/App.css";
+import "../css/App.css";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getAll } from "./BooksAPI";
-import BookList from "./components/BookList";
-import SearchBook from "./components/SearchBook";
-import BookDetails from "./components/BookDetails";
+import { getAll } from "../BooksAPI";
+import BookList from "./BookList";
+import SearchBook from "./SearchBook";
+import BookDetails from "./BookDetails";
 
 function App() {
     const [ books, setBooks ] = useState([]);
@@ -33,7 +33,7 @@ function App() {
                 />
                 <Route
                     path="/search"
-                    element={ <SearchBook books={ books } /> }
+                    element={ <SearchBook books={ books } fetchAllBooks={ fetchAllBooks } /> }
                 />
             </Routes>
         </div >
