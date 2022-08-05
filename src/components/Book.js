@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { update } from "../BooksAPI";
+import { update } from "../utils/BooksAPI";
 import PropTypes from "prop-types";
 
 const Book = ({ book, fetchAllBooks, isSearchResult, shelfFromMainPage }) => {

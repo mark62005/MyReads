@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { get, update } from "../BooksAPI";
+import { get, update } from "../utils/BooksAPI";
 import { useState, useEffect } from "react";
 
 const BookDetails = () => {

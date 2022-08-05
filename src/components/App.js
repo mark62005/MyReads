@@ -1,9 +1,9 @@
 import "../css/App.css";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getAll } from "../BooksAPI";
+import { getAll } from "../utils/BooksAPI";
 import BookList from "./BookList";
-import SearchBook from "./SearchBook";
+import Search from "./Search";
 import BookDetails from "./BookDetails";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
                 />
                 <Route
                     path="/search"
-                    element={ <SearchBook books={ books } fetchAllBooks={ fetchAllBooks } /> }
+                    element={ <Search books={ books } fetchAllBooks={ fetchAllBooks } /> }
                 />
             </Routes>
         </div >

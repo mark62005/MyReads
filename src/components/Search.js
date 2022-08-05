@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { search } from "../BooksAPI";
+import { search } from "../utils/BooksAPI";
 import PropTypes from "prop-types";
 import SearchResults from "./SearchResults";
 
-const SearchBook = ({ books, fetchAllBooks }) => {
+const Search = ({ books, fetchAllBooks }) => {
     const [ query, setQuery ] = useState("");
     const [ matchedBooks, setMatchedBooks ] = useState([]);
 
@@ -49,9 +49,9 @@ const SearchBook = ({ books, fetchAllBooks }) => {
     );
 };
 
-SearchBook.propTypes = {
+Search.propTypes = {
     books: PropTypes.array.isRequired,
     fetchAllBooks: PropTypes.func.isRequired,
 };
 
-export default SearchBook;
+export default Search;
