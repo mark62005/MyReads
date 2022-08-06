@@ -4,6 +4,8 @@ This is my implementation of the final assessment project for Udacity's React Fu
 
 The project emphasizes using React to build the application and provides an API server and client library that you will use to persist information as you interact with the application.
 
+![Screen Shot 2022-08-05 at 5 09 13 PM](https://user-images.githubusercontent.com/73043578/183225515-107ee835-4add-4bf8-a00f-ef54bc4347f2.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
