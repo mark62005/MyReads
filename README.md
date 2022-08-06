@@ -1,18 +1,30 @@
 # MyReads
 
-This is the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+This is my implementation of the final assessment project for Udacity's React Fundamentals course. MyReads is a bookshelf app that allows user to select and categorize books they have read, are currently reading, or want to read. 
+
+The project emphasizes using React to build the application and provides an API server and client library that you will use to persist information as you interact with the application.
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Prerequisites
+
+This project can be built with npm.
+- npm is a package manager for the JavaScript programming language maintained by npm, Inc. npm is the default package manager for the JavaScript runtime environment Node.js. [Download Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
 ### Installation
 
-Clone the GitHub repository and install the dependencies.
+1. Clone the GitHub repository
 
 ```
 git clone https://github.com/mark62005/MyReads.git
 cd MyReads
+```
+
+2. Install the dependencies.
+
+```
 npm install
 ```
 
@@ -42,16 +54,16 @@ npm start
     │   ├── BookList.js
     │   ├── Bookshelf.js
     │   ├── Search.js
-    │   ├── SearchResults.js
+    │   └── SearchResults.js
     ├── css
     │   ├── App.css
-    │   ├── index.css
+    │   └── index.css
     ├── icons 
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
     ├── utils
-    │   ├── BooksAPI.js 
+    └── └── BooksAPI.js 
 ```
 
 ## Backend Server
@@ -100,7 +112,3 @@ search(query);
 ## Important
 
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
-
-## Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebook/create-react-app/blob/main/packages/cra-template/template/README.md).
