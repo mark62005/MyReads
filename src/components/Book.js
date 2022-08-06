@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { update } from "../utils/BooksAPI";
 import PropTypes from "prop-types";
 
-const Book = ({ book, fetchAllBooks, isSearchResult, shelfFromMainPage }) => {
+const Book = ({ book, fetchAllBooks, shelfFromMainPage }) => {
     const renderCover = () => {
         return (
             <Link
@@ -64,7 +64,7 @@ const Book = ({ book, fetchAllBooks, isSearchResult, shelfFromMainPage }) => {
                                         : "none"
                             }
                         >
-                            <option value="none" disabled>
+                            <option value="" disabled>
                                 Move to...
                             </option>
                             <option value="currentlyReading">
@@ -72,11 +72,7 @@ const Book = ({ book, fetchAllBooks, isSearchResult, shelfFromMainPage }) => {
                             </option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
-                            {
-                                isSearchResult === true
-                                    ? null
-                                    : <option value="none">None</option>
-                            }
+                            <option value="none">None</option>
                         </select>
                     </div>
                 </div>
@@ -92,7 +88,6 @@ const Book = ({ book, fetchAllBooks, isSearchResult, shelfFromMainPage }) => {
 Book.propTypes = {
     book: PropTypes.object.isRequired,
     fetchAllBooks: PropTypes.func.isRequired,
-    isSearchResult: PropTypes.bool,
     shelfFromMainPage: PropTypes.string,
 };
 

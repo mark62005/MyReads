@@ -2,8 +2,6 @@ import PropTypes from "prop-types";
 import Book from "./Book";
 
 const SearchResults = ({ matchedBooks, fetchAllBooks, booksFromMainPage }) => {
-    const isSearchResult = true;
-
     const renderSearchResults = () => {
         return matchedBooks && matchedBooks.length > 0
             ? matchedBooks.map(
@@ -13,7 +11,6 @@ const SearchResults = ({ matchedBooks, fetchAllBooks, booksFromMainPage }) => {
                     return <Book
                         key={ book.id }
                         book={ book }
-                        isSearchResult={ isSearchResult }
                         fetchAllBooks={ fetchAllBooks }
                         shelfFromMainPage={ bookFound ? bookFound.shelf : null }
                     />;
